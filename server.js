@@ -47,12 +47,13 @@ async function startServer() {
         // Check the database connection and confirm the guests table exists.
         await pool.query("SELECT guest_id FROM public.guests LIMIT 1");
 
-        console.log("Connected to the birthday_party database.");
+        console.log("Connected to the configured PostgreSQL database.");
         console.log("Guests table found.");
 
-        // Local development: accessible from this computer.
-        app.listen(PORT, "127.0.0.1", () => {
-            console.log(`Open http://127.0.0.1:${PORT}/api/health`);
+        const HOST = process.env.HOST || "127.0.0.1";
+
+        app.listen(PORT, HOST, () => {
+            console.log(`Server listening on port ${PORT}`);
         });
     } catch (error) {
         console.error("Could not start the server:", error.message);
