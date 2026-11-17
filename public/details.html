@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Details &amp; Guests</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="api.js" defer></script>
+    <script src="party.js" defer></script>
+    <script src="details.js" defer></script>
+</head>
+
+<body>
+    <main class="page-container">
+        <header class="page-heading">
+            <p class="eyebrow">WELCOME BACK</p>
+            <h1 data-party="title"></h1>
+            <p id="guest-status" role="status">Checking your response…</p>
+            <button class="text-button" id="retry-details" hidden>
+                Try again
+            </button>
+        </header>
+
+        <div id="details-content" hidden>
+            <section class="content-card">
+                <h2>The plan</h2>
+
+                <dl class="party-grid">
+                    <div>
+                        <dt>Date</dt>
+                        <dd data-party="date"></dd>
+                    </div>
+                    <div>
+                        <dt>Time</dt>
+                        <dd data-party="time"></dd>
+                    </div>
+                    <div>
+                        <dt>Location</dt>
+                        <dd data-party="venue"></dd>
+                    </div>
+                    <div>
+                        <dt>Dress code</dt>
+                        <dd data-party="dressCode"></dd>
+                    </div>
+                </dl>
+
+                <p data-party="plan"></p>
+
+                <a class="primary-button" data-maps-link target="_blank" rel="noopener noreferrer" hidden>Open in
+                    Maps</a>
+            </section>
+
+            <section class="content-card">
+                <h2>Who’s coming?</h2>
+                <p id="guest-count" role="status"></p>
+                <ul id="guest-list" class="guest-list"></ul>
+
+                <button class="text-button" id="refresh-guests">
+                    Refresh guest list
+                </button>
+            </section>
+
+            <button class="primary-button" onclick="goToPage('invitation.html')">
+                Change my response
+            </button>
+        </div>
+
+        <button class="text-button" onclick="goToPage('index.html')">
+            Back to envelope
+        </button>
+    </main>
+</body>
+
+</html>

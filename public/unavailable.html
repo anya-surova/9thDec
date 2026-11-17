@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="api.js" defer></script>
+    <script src="result.js" defer></script>
+</head>
+
+<body>
+    <main class="preview-card">
+        <p class="eyebrow">ANYA’S BIRTHDAY</p>
+        <h1 id="result-title">Checking your RSVP…</h1>
+        <p id="result-message" role="status"></p>
+
+        <div id="result-actions" hidden>
+            <button class="primary-button" onclick="goToPage('details.html')">
+                Party details &amp; who’s coming
+            </button>
+
+            <button class="text-button" onclick="goToPage('invitation.html')">
+                Change my response
+            </button>
+        </div>
+
+        <button id="result-retry" class="text-button" onclick="window.location.reload()" hidden>
+            Try again
+        </button>
+    </main>
+</body>
+
+</html>

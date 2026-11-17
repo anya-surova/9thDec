@@ -1,0 +1,452 @@
+:root {
+    --cream: #fff8ef;
+    --burgundy: #742c43;
+    --pink: #edb6bf;
+    --light-pink: #f6cdd3;
+    --dark-pink: #d994a3;
+    --text: #553b42;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background: var(--cream);
+    font-family: Arial, sans-serif;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--burgundy);
+    outline-offset: 6px;
+}
+
+button:disabled {
+    cursor: wait;
+}
+
+.landing {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 40px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 15% 30%, #f8dfdf 0, transparent 35%),
+        radial-gradient(circle at 85% 65%, #f5e3d5 0, transparent 35%);
+}
+
+.eyebrow {
+    color: var(--burgundy);
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 16px 0;
+    color: var(--burgundy);
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: normal;
+}
+
+#greeting {
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.hint {
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+/* The envelope moves only within this bounded area. */
+.flight-area {
+    --envelope-width: clamp(160px, 45vw, 240px);
+    position: relative;
+    width: min(100%, 850px);
+    height: clamp(280px, 42vh, 440px);
+    flex-shrink: 0;
+    margin: 12px 0;
+}
+
+.flyer {
+    position: absolute;
+    width: var(--envelope-width);
+    aspect-ratio: 1.5;
+    left: 0;
+    top: 38%;
+    animation: fly 12s ease-in-out infinite;
+}
+
+.envelope {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: var(--dark-pink);
+    box-shadow: 0 18px 35px #742c4326;
+    perspective: 800px;
+    isolation: isolate;
+}
+
+.letter {
+    position: absolute;
+    inset: 10% 8%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 4px;
+    background: #fffdf8;
+    color: var(--burgundy);
+    font-family: Georgia, serif;
+    font-size: clamp(18px, 4vw, 26px);
+    transition: transform 650ms ease 350ms;
+}
+
+.letter span {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+}
+
+.pocket {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 0 0 8px 8px;
+    background: var(--pink);
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+}
+
+.flap {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: var(--light-pink);
+    clip-path: polygon(0 0, 100% 0, 50% 55%);
+    transform-origin: top;
+    backface-visibility: hidden;
+    transition: transform 500ms ease;
+}
+
+.seal {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: var(--cream);
+    transition: opacity 200ms ease;
+}
+
+/* Pausing keeps the envelope at its current position. */
+.flyer.paused,
+.flyer:focus-within {
+    animation-play-state: paused;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+    transform: translateY(-65%);
+}
+
+.envelope.open .seal {
+    opacity: 0;
+}
+
+.entrance-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.primary-button {
+    display: inline-block;
+    border: 0;
+    border-radius: 999px;
+    padding: 15px 28px;
+    min-height: 48px;
+    background: var(--burgundy);
+    color: white;
+    text-decoration: none;
+}
+
+.text-button {
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 0;
+    background: transparent;
+    color: var(--burgundy);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.notice {
+    min-height: 24px;
+    max-width: 440px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.preview-card {
+    width: min(90%, 650px);
+    margin: 70px auto;
+    padding: 32px;
+    border: 1px solid var(--pink);
+    border-radius: 20px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+@keyframes fly {
+
+    0%,
+    100% {
+        left: 0;
+        top: 38%;
+        transform: rotate(-7deg);
+    }
+
+    30% {
+        left: calc(100% - var(--envelope-width));
+        top: 20%;
+        transform: rotate(7deg);
+    }
+
+    65% {
+        left: calc(50% - var(--envelope-width) / 2);
+        top: 48%;
+        transform: rotate(-4deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .landing {
+        padding-top: 28px;
+    }
+
+    .eyebrow {
+        letter-spacing: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flyer {
+        animation: none;
+        left: calc(50% - var(--envelope-width) / 2);
+    }
+
+    .letter,
+    .flap,
+    .seal {
+        transition: none;
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.page-container {
+    width: min(100% - 32px, 860px);
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.7;
+}
+
+.content-card {
+    padding: clamp(22px, 5vw, 40px);
+    margin-bottom: 24px;
+    border: 1px solid var(--pink);
+    border-radius: 22px;
+    background: #fffdf9;
+    line-height: 1.6;
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--burgundy);
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: normal;
+}
+
+.party-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.party-grid dt {
+    color: var(--burgundy);
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.party-grid dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+#rsvp-fields {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#rsvp-form label:not(.radio-option) {
+    display: block;
+    font-weight: bold;
+    margin: 20px 0 8px;
+}
+
+input[type="text"],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cba5af;
+    border-radius: 10px;
+    background: white;
+    color: var(--text);
+    font: inherit;
+    font-size: 16px;
+}
+
+input[readonly] {
+    background: #f7efec;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 3px;
+}
+
+.attendance-options {
+    min-width: 0;
+    padding: 0;
+    margin: 26px 0;
+    border: 0;
+}
+
+.attendance-options legend {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border: 1px solid var(--pink);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--burgundy);
+}
+
+.small-note {
+    font-size: 13px;
+    margin: 22px 0;
+}
+
+.saved-response {
+    padding: 14px;
+    background: #f9e9ed;
+    border-radius: 10px;
+}
+
+#form-status {
+    color: var(--burgundy);
+}
+
+.guest-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.guest-list li {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #f9e9ed;
+    overflow-wrap: anywhere;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+
+    .party-grid,
+    .guest-list {
+        grid-template-columns: 1fr;
+    }
+
+    #submit-rsvp {
+        width: 100%;
+    }
+}

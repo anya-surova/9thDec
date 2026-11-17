@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You’re Invited!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="api.js" defer></script>
+    <script src="party.js" defer></script>
+    <script src="invitation.js" defer></script>
+</head>
+
+<body>
+    <main class="page-container">
+        <header class="page-heading">
+            <p class="eyebrow">LET’S CELEBRATE</p>
+            <h1 data-party="title"></h1>
+            <p data-party="introduction"></p>
+        </header>
+
+        <section class="content-card" aria-labelledby="plan-heading">
+            <h2 id="plan-heading">The plan</h2>
+
+            <dl class="party-grid">
+                <div>
+                    <dt>Date</dt>
+                    <dd data-party="date"></dd>
+                </div>
+                <div>
+                    <dt>Time</dt>
+                    <dd data-party="time"></dd>
+                </div>
+                <div>
+                    <dt>Location</dt>
+                    <dd data-party="venue"></dd>
+                </div>
+                <div>
+                    <dt>Dress code</dt>
+                    <dd data-party="dressCode"></dd>
+                </div>
+            </dl>
+
+            <p data-party="plan"></p>
+
+            <a class="primary-button" data-maps-link target="_blank" rel="noopener noreferrer" hidden>Open in Maps</a>
+        </section>
+
+        <section class="content-card" aria-labelledby="rsvp-heading">
+            <p class="eyebrow">SAVE YOUR SPOT</p>
+            <h2 id="rsvp-heading">Will you be joining me?</h2>
+            <p>RSVP by <strong data-party="rsvpDeadline"></strong>.</p>
+
+            <p id="load-status" role="status">Loading your invitation…</p>
+            <button id="retry-load" class="text-button" type="button" hidden>
+                Try again
+            </button>
+
+            <form id="rsvp-form" hidden>
+                <fieldset id="rsvp-fields">
+                    <legend class="sr-only">Your RSVP</legend>
+
+                    <label for="guest-name">Your name</label>
+                    <input id="guest-name" type="text" readonly>
+
+                    <p id="saved-response" class="saved-response" hidden></p>
+
+                    <fieldset class="attendance-options">
+                        <legend>Can you make it?</legend>
+
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="attending" required>
+                            Yes, I’ll be there!
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="unavailable" required>
+                            Sorry, I can’t make it
+                        </label>
+                    </fieldset>
+
+                    <div id="dietary-section" hidden>
+                        <label for="dietary">
+                            Dietary requirements — optional
+                        </label>
+                        <textarea id="dietary" maxlength="500" rows="3"
+                            placeholder="Any allergies or dietary requirements?"></textarea>
+                    </div>
+
+                    <label for="message">A message for Anya — optional</label>
+                    <textarea id="message" maxlength="1000" rows="3"
+                        placeholder="Anything you’d like me to know?"></textarea>
+
+                    <p class="small-note">
+                        If you attend, your display name will appear on the guest list.
+                        Your dietary requirements and message are private to Anya.
+                    </p>
+
+                    <button class="primary-button" id="submit-rsvp" type="submit">
+                        Send RSVP
+                    </button>
+                </fieldset>
+
+                <p id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <button class="text-button" onclick="goToPage('index.html')">
+            Back to envelope
+        </button>
+    </main>
+</body>
+
+</html>

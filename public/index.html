@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anya’s Birthday Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="api.js" defer></script>
+    <script src="landing.js" defer></script>
+</head>
+
+<body>
+    <main class="landing">
+        <header>
+            <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
+            <h1>You’ve got mail.</h1>
+            <p id="greeting">An invitation to a very special celebration.</p>
+            <p class="hint">Catch the envelope to open it!</p>
+        </header>
+
+        <div class="flight-area">
+            <div class="flyer" id="flyer">
+                <button class="envelope" id="envelope" type="button" aria-label="Open your birthday invitation">
+                    <span class="letter" aria-hidden="true">
+                        You’re invited!
+                        <span>With love, Anya</span>
+                    </span>
+
+                    <span class="pocket" aria-hidden="true"></span>
+                    <span class="flap" aria-hidden="true"></span>
+                    <span class="seal" aria-hidden="true">♥</span>
+                </button>
+            </div>
+        </div>
+
+        <footer class="entrance-actions">
+            <button class="primary-button" id="open-button" type="button">
+                Open invitation
+            </button>
+
+            <button class="text-button" id="return-button" type="button">
+                I’ve already RSVP’d
+            </button>
+
+            <p id="notice" class="notice" role="status" aria-live="polite"></p>
+        </footer>
+    </main>
+</body>
+
+</html>
