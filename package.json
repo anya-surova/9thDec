@@ -1,0 +1,25 @@
+{
+  "name": "9thdec",
+  "version": "1.0.0",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anya-surova/9thDec.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anya-surova/9thDec/issues"
+  },
+  "homepage": "https://github.com/anya-surova/9thDec#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "pg": "^8.23.1"
+  }
+}
