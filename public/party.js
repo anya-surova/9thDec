@@ -1,13 +1,13 @@
 const party = {
-    title: "Anya’s Birthday",
-    introduction: "Come celebrate with me! An evening of food, laughter and memories.",
-    date: "Date to be confirmed",
-    time: "Time to be confirmed",
-    venue: "Venue to be confirmed",
-    dressCode: "Dress code to be confirmed",
-    plan: "Food, games, photos and birthday cake!",
-    rsvpDeadline: "To be confirmed",
-    mapsUrl: ""
+    title: "Anna’s Birthday",
+    introduction: "Come have a fun evening and celebrate the big 20th!",
+    date: "9th December",
+    time: "6 to 9pm",
+    venue: "Function Room @ 18 Cavendish Park",
+    dressCode: "Colour & Sparkle!",
+    plan: "Food, games, swim! Bring your swim wear",
+    rsvpDeadline: "1st December",
+    mapsUrl: "https://maps.app.goo.gl/vXQ4e3YkKhZT6AZk6"
 };
 
 document.querySelectorAll("[data-party]").forEach((element) => {
@@ -15,7 +15,7 @@ document.querySelectorAll("[data-party]").forEach((element) => {
     element.textContent = party[key] || "";
 });
 
-document.querySelectorAll("https://maps.app.goo.gl/vXQ4e3YkKhZT6AZk6").forEach((link) => {
+document.querySelectorAll("[data-maps-link]").forEach((link) => {
     if (party.mapsUrl) {
         link.href = party.mapsUrl;
         link.hidden = false;

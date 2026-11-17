@@ -1,6 +1,6 @@
 const flyer = document.getElementById("flyer");
 const envelope = document.getElementById("envelope");
-const openButton = document.getElementById("open-button");
+
 const returnButton = document.getElementById("return-button");
 const greeting = document.getElementById("greeting");
 const notice = document.getElementById("notice");
@@ -10,7 +10,7 @@ let busy = false;
 function setBusy(value) {
     busy = value;
     envelope.disabled = value;
-    openButton.disabled = value;
+   
     returnButton.disabled = value;
     flyer.classList.toggle("paused", value);
 }
@@ -61,7 +61,7 @@ async function viewExistingResponse() {
 }
 
 envelope.addEventListener("click", openInvitation);
-openButton.addEventListener("click", openInvitation);
+
 returnButton.addEventListener("click", viewExistingResponse);
 
 // Add the guest's name safely as plain text.

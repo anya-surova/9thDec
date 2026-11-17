@@ -1,5 +1,6 @@
 :root {
-    --cream: #fff8ef;
+    --cream: rgb(255, 248, 239);
+    --dark-cream: #efe5d8;
     --burgundy: #742c43;
     --pink: #edb6bf;
     --light-pink: #f6cdd3;
@@ -46,9 +47,13 @@ button:disabled {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background:
-        radial-gradient(circle at 15% 30%, #f8dfdf 0, transparent 35%),
-        radial-gradient(circle at 85% 65%, #f5e3d5 0, transparent 35%);
+    background-image:
+
+        url("assets/background1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .eyebrow {
@@ -92,7 +97,7 @@ h1 {
     aspect-ratio: 1.5;
     left: 0;
     top: 38%;
-    animation: fly 12s ease-in-out infinite;
+    animation: fly 4s ease-in-out infinite;
 }
 
 .envelope {
@@ -135,7 +140,7 @@ h1 {
     inset: 0;
     z-index: 2;
     border-radius: 0 0 8px 8px;
-    background: var(--pink);
+    background: var(--dark-cream);
     clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -143,7 +148,7 @@ h1 {
     position: absolute;
     inset: 0;
     z-index: 3;
-    background: var(--light-pink);
+    background: var(--cream);
     clip-path: polygon(0 0, 100% 0, 50% 55%);
     transform-origin: top;
     backface-visibility: hidden;
@@ -225,10 +230,14 @@ h1 {
     width: min(90%, 650px);
     margin: 70px auto;
     padding: 32px;
-    border: 1px solid var(--pink);
+    border: 1px solid var(--cream);
     border-radius: 20px;
     text-align: center;
     line-height: 1.7;
+
+    background-color: rgba(245, 235, 215, 0.65);
+
+  
 }
 
 @keyframes fly {
@@ -297,7 +306,7 @@ h1 {
     margin-bottom: 24px;
     border: 1px solid var(--pink);
     border-radius: 22px;
-    background: #fffdf9;
+    background-color: rgba(255, 248, 239, 0.781);
     line-height: 1.6;
 }
 
@@ -449,4 +458,52 @@ input[type="radio"] {
     #submit-rsvp {
         width: 100%;
     }
+}
+
+
+body.party-background {
+    min-height: 100vh;
+    min-height: 100svh;
+    background: transparent;
+    isolation: isolate;
+}
+
+body.party-background::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(255, 248, 239, 0.3),
+            rgba(255, 248, 239, 0.3)),
+        url("assets/background2.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+body.index-background {
+    min-height: 100vh;
+    min-height: 100svh;
+    background: transparent;
+    isolation: isolate;
+}
+
+body.index-background::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        url("assets/background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
